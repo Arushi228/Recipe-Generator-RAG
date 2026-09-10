@@ -1,0 +1,14 @@
+flask==3.0.3
+flask-cors==4.0.1
+langchain==0.3.25
+langchain-community==0.3.24
+langchain-core==0.3.60
+langchain-text-splitters==0.3.8
+langchain-huggingface==0.1.2
+faiss-cpu==1.8.0
+sentence-transformers==3.1.1
+huggingface-hub==0.24.7
+transformers==4.44.2
+torch==2.4.1
+accelerate==0.34.2
+numpy==1.26.4

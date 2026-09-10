@@ -1,0 +1,192 @@
+
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>RAG Recipe Generator — Project Summary</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,"Segoe UI",system-ui,sans-serif;background:#f9fafb;color:#1f2328;font-size:14px;line-height:1.6}
+.wrap{max-width:760px;margin:0 auto;padding:2rem 1.5rem}
+h1{font-size:1.6rem;font-weight:700;color:#ea580c;margin-bottom:.25rem}
+.subtitle{color:#57606a;font-size:.88rem;margin-bottom:2rem}
+h2{font-size:1rem;font-weight:700;color:#1f2328;margin:1.5rem 0 .6rem;border-bottom:1px solid #e5e7eb;padding-bottom:.3rem}
+h3{font-size:.88rem;font-weight:700;color:#374151;margin:.8rem 0 .3rem}
+p{margin-bottom:.6rem;color:#374151;font-size:.88rem}
+code{background:#f3f4f6;padding:.1em .35em;border-radius:4px;font-size:.8em;font-family:"Courier New",monospace;color:#ea580c}
+pre{background:#1e293b;color:#e2e8f0;border-radius:8px;padding:1rem;font-size:.78em;overflow-x:auto;margin:.5rem 0 1rem;font-family:"Courier New",monospace;line-height:1.7}
+
+/* Badges */
+.badges{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem}
+.badge{padding:.25rem .7rem;border-radius:999px;font-size:.72rem;font-weight:600}
+.b-orange{background:#fff7ed;color:#c2410c;border:1px solid #fed7aa}
+.b-green{background:#f0fdf4;color:#15803d;border:1px solid #bbf7d0}
+.b-blue{background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe}
+.b-purple{background:#faf5ff;color:#7e22ce;border:1px solid #e9d5ff}
+
+/* Files grid */
+.files-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.75rem;margin-bottom:1.5rem}
+.file-card{background:#fff;border:1px solid #e5e7eb;border-radius:8px;padding:.75rem 1rem}
+.file-name{font-weight:700;font-size:.82rem;color:#ea580c;margin-bottom:.2rem}
+.file-desc{font-size:.75rem;color:#57606a;line-height:1.45}
+
+/* Pipeline */
+.pipeline{display:flex;align-items:center;flex-wrap:wrap;gap:.4rem;margin:1rem 0;padding:1rem;background:#fff;border:1px solid #e5e7eb;border-radius:8px}
+.pip-step{background:#f3f4f6;border:1px solid #e5e7eb;border-radius:6px;padding:.4rem .8rem;font-size:.78rem;font-weight:600;color:#374151}
+.pip-arrow{color:#9ca3af;font-size:.9rem;font-weight:700}
+
+/* Endpoints table */
+table{width:100%;border-collapse:collapse;font-size:.8rem;margin:.5rem 0 1rem}
+th{background:#f3f4f6;padding:.45rem .75rem;text-align:left;font-weight:700;font-size:.75rem;color:#57606a;border:1px solid #e5e7eb}
+td{padding:.4rem .75rem;border:1px solid #e5e7eb;color:#374151}
+tr:nth-child(even) td{background:#fafafa}
+
+/* Steps */
+.steps{counter-reset:steps;display:flex;flex-direction:column;gap:.5rem;margin:.5rem 0}
+.step{display:flex;align-items:flex-start;gap:.75rem;padding:.6rem .85rem;background:#fff;border:1px solid #e5e7eb;border-radius:6px}
+.step-num{background:#ea580c;color:#fff;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;flex-shrink:0;margin-top:.1rem}
+.step-text{font-size:.82rem;color:#374151}
+
+/* Recipes grid */
+.recipe-pills{display:flex;flex-wrap:wrap;gap:.4rem;margin:.5rem 0 1rem}
+.recipe-pill{background:#fff7ed;color:#c2410c;border:1px solid #fed7aa;border-radius:999px;padding:.2rem .65rem;font-size:.75rem}
+
+/* Info box */
+.info-box{background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:.85rem 1rem;font-size:.82rem;color:#1e40af;margin:.75rem 0}
+
+footer{margin-top:2.5rem;padding-top:1rem;border-top:1px solid #e5e7eb;text-align:center;font-size:.72rem;color:#57606a}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>🍽️ RAG Recipe Generator Agent</h1>
+  <p class="subtitle">A Retrieval-Augmented Generation application that generates recipes using an open-source LLM, FAISS vector search, and LangChain.</p>
+
+  <div class="badges">
+    <span class="badge b-orange">Llama 3.1 8B (open-source)</span>
+    <span class="badge b-green">FAISS Vector Store</span>
+    <span class="badge b-blue">LangChain RetrievalQA</span>
+    <span class="badge b-purple">HuggingFace Embeddings</span>
+    <span class="badge b-green">Flask Backend</span>
+    <span class="badge b-orange">12 Recipes in KB</span>
+  </div>
+
+  
+  <h2>📁 Project Files</h2>
+  <div class="files-grid">
+    <div class="file-card">
+      <div class="file-name">app.py</div>
+      <div class="file-desc">Flask backend · RAG pipeline · 4 API endpoints · FAISS index builder</div>
+    </div>
+    <div class="file-card">
+      <div class="file-name">templates/index.html</div>
+      <div class="file-desc">Full SPA frontend · chat bubbles · suggestion cards · filter chips · semantic search</div>
+    </div>
+    <div class="file-card">
+      <div class="file-name">static/style.css</div>
+      <div class="file-desc">Complete styling · responsive grid · loading overlay · chat bubble design</div>
+    </div>
+    <div class="file-card">
+      <div class="file-name">requirements.txt</div>
+      <div class="file-desc">All Python dependencies pinned: Flask, LangChain, FAISS, sentence-transformers, langchain-groq</div>
+    </div>
+    <div class="file-card">
+      <div class="file-name">recipes_data.txt</div>
+      <div class="file-desc">RAG knowledge base · 12 full recipes with ingredients, instructions, tips, and nutrition</div>
+    </div>
+    <div class="file-card">
+      <div class="file-name">.env.example</div>
+      <div class="file-desc">Template for GROQ_API_KEY environment variable</div>
+    </div>
+  </div>
+
+  
+  <h2>⚙️ RAG Pipeline</h2>
+  <div class="pipeline">
+    <span class="pip-step">User Query</span>
+    <span class="pip-arrow">→</span>
+    <span class="pip-step">MiniLM Embed</span>
+    <span class="pip-arrow">→</span>
+    <span class="pip-step">FAISS Search</span>
+    <span class="pip-arrow">→</span>
+    <span class="pip-step">Top-3 Chunks</span>
+    <span class="pip-arrow">→</span>
+    <span class="pip-step">Chef Prompt</span>
+    <span class="pip-arrow">→</span>
+    <span class="pip-step">Llama 3.1 8B</span>
+    <span class="pip-arrow">→</span>
+    <span class="pip-step">JSON Response</span>
+  </div>
+  <p>Embeddings use <code>sentence-transformers/all-MiniLM-L6-v2</code> (runs 100% locally, no API key needed). The FAISS index is persisted to <code>faiss_index/</code> on first run for fast subsequent starts.</p>
+
+  
+  <h2>🔌 API Endpoints</h2>
+  <table>
+    <tr><th>Method</th><th>Path</th><th>Description</th></tr>
+    <tr><td>GET</td><td><code>/</code></td><td>Serve the frontend UI</td></tr>
+    <tr><td>POST</td><td><code>/api/ask</code></td><td>RAG query → LLM-generated recipe answer + source attribution</td></tr>
+    <tr><td>GET</td><td><code>/api/suggest</code></td><td>Return 10 recipe suggestions with emoji + category</td></tr>
+    <tr><td>POST</td><td><code>/api/search</code></td><td>Semantic FAISS similarity search across the knowledge base</td></tr>
+    <tr><td>GET</td><td><code>/api/health</code></td><td>Health check — returns model name and RAG status</td></tr>
+  </table>
+
+  
+  <h2>📚 Knowledge Base (12 Recipes)</h2>
+  <div class="recipe-pills">
+    <span class="recipe-pill">🍕 Margherita Pizza</span>
+    <span class="recipe-pill">🍛 Chicken Tikka Masala</span>
+    <span class="recipe-pill">🥑 Avocado Toast</span>
+    <span class="recipe-pill">🌮 Beef Tacos</span>
+    <span class="recipe-pill">🍄 Mushroom Risotto</span>
+    <span class="recipe-pill">🍫 Chocolate Lava Cake</span>
+    <span class="recipe-pill">🥗 Greek Salad</span>
+    <span class="recipe-pill">🍜 Pad Thai</span>
+    <span class="recipe-pill">🍌 Banana Smoothie Bowl</span>
+    <span class="recipe-pill">🥩 Beef Stir Fry</span>
+    <span class="recipe-pill">🐟 Lemon Butter Salmon</span>
+    <span class="recipe-pill">🫘 Vegetable Curry</span>
+  </div>
+
+  
+  <h2>🚀 Quick Start</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-text">Install dependencies: <code>pip install -r requirements.txt</code></div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-text">Get a <strong>free</strong> Groq API key at <code>console.groq.com/keys</code> and create a <code>.env</code> file with <code>GROQ_API_KEY=gsk_...</code></div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-text">Run the server: <code>python app.py</code> — FAISS index auto-builds on first launch</div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-text">Open <code>http://localhost:5000</code> in your browser and start generating recipes!</div>
+    </div>
+  </div>
+
+  <div class="info-box">
+    💡 <strong>Tip:</strong> To extend the knowledge base, add recipes to <code>recipes_data.txt</code> following the existing format (separated by <code>---</code>), then delete <code>faiss_index/</code> and restart the server.
+  </div>
+
+  
+  <h2>🛠️ Tech Stack</h2>
+  <table>
+    <tr><th>Component</th><th>Technology</th><th>Notes</th></tr>
+    <tr><td>LLM</td><td>Meta Llama 3.1 8B</td><td>Open-source · via Groq free tier</td></tr>
+    <tr><td>Embeddings</td><td>all-MiniLM-L6-v2</td><td>Runs locally · Apache 2.0</td></tr>
+    <tr><td>Vector Store</td><td>FAISS</td><td>Persisted to disk · MIT</td></tr>
+    <tr><td>RAG Orchestration</td><td>LangChain RetrievalQA</td><td>Custom chef prompt template</td></tr>
+    <tr><td>Web Framework</td><td>Flask 3.0</td><td>4 REST endpoints</td></tr>
+    <tr><td>Frontend</td><td>Vanilla HTML/CSS/JS</td><td>No build step required</td></tr>
+  </table>
+
+</div>
+<footer>RAG Recipe Generator  ·  Built with IBM Bob</footer>
+
+</body>
+</html>
